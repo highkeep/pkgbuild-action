@@ -30,7 +30,7 @@ fi
 pacman -Syu --noconfirm --needed base base-devel
 
 if [ "${INPUT_MULTILIB:-false}" == true ]; then
-    pacman -Syu --noconfirm --needed multilib-devel
+    pacman -Syu --noconfirm --needed multilib-devel nvidia-utils lib32-nvidia-utils
 fi
 
 # Makepkg does not allow running as root
