@@ -41,6 +41,10 @@ inputs:
     description: "Install 'multilib-devel' to build lib32 packages."
     required: false
     default: false
+  nvidiaUtils:
+    description: "Install 'nvidia-utils & lib32-nvidia-utils' to build vulkan packages."
+    required: false
+    default: false
   repoReleaseTag:
     description: "Tag to use as repository name."
     required: false
