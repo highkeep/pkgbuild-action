@@ -54,6 +54,10 @@ outputs:
     description: "Filename of the first generated package archive. Usually only one."
   pkgfile1:
     description: "Filename of the 2nd generated package archive, etc."
+  pkgfile2:
+    description: "Filename of the 3nd generated package archive, etc."
+  pkgfile3:
+    description: "Filename of the 4nd generated package archive, etc."
   repofile0:
     description: "<repoReleaseTag>.db"
   repofile1:
