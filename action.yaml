@@ -58,6 +58,8 @@ outputs:
     description: "Filename of the 3nd generated package archive, etc."
   pkgfile3:
     description: "Filename of the 4nd generated package archive, etc."
+  pkgfiles:
+    description: "All filename of the generated packages archive, etc."
   repofile0:
     description: "<repoReleaseTag>.db"
   repofile1:
@@ -66,6 +68,8 @@ outputs:
     description: "<repoReleaseTag>.files"
   repofile3:
     description: "<repoReleaseTag>.files.tar.gz"
+  repofiles:
+    description: "All repo files - <repoReleaseTag>.{db{,.tar.gz},files{,.tar.gz}} "
 runs:
   using: 'docker'
   image: 'Dockerfile'
