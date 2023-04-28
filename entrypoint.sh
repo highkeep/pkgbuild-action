@@ -17,6 +17,16 @@ Server = https://arch.alerque.com/\$arch
 EOM
 pacman-key --recv-keys 63CC496475267693
 
+if [ -n "${INPUT_RECVKEYS:-}" ]; then
+    echo "Running gpg --recv-keys for: ${INPUT_RECVKEYS:-}"
+    readarray -td '' publicKeys < <(awk '{ gsub(/, /,"\0"); print; }' <<<"${INPUT_RECVKEYS:-}, ")
+    unset 'publicKeys[-1]'
+
+    for key in ${publicKeys[@]}; do
+        gpg --recv-keys ${key}
+    done
+fi
+
 if [ -n "${INPUT_PACMANCONF:-}" ]; then
     echo "Using ${INPUT_PACMANCONF:-} as pacman.conf"
     cp "${INPUT_PACMANCONF:-}" /etc/pacman.conf
@@ -35,16 +45,6 @@ fi
 
 if [ "${INPUT_NVIDIAUTILS:-false}" == true ]; then
     pacman -Syu --noconfirm --needed multilib-devel nvidia-utils lib32-nvidia-utils
-fi
-
-if [ -n "${INPUT_RECVKEYS:-}" ]; then
-    echo "Running gpg --recv-keys for: ${INPUT_RECVKEYS:-}"
-    readarray -td '' publicKeys < <(awk '{ gsub(/, /,"\0"); print; }' <<<"${INPUT_RECVKEYS:-}, ")
-    unset 'publicKeys[-1]'
-
-    for key in ${publicKeys[@]}; do
-        gpg --recv-keys ${key}
-    done
 fi
 
 # Makepkg does not allow running as root
