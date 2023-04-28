@@ -40,11 +40,12 @@ inputs:
   multilib:
     description: "Install 'multilib-devel' to build lib32 packages."
     required: false
-    default: false
   nvidiaUtils:
     description: "Install 'nvidia-utils & lib32-nvidia-utils' to build vulkan packages."
     required: false
-    default: false
+  recvKeys:
+    description: "Import PGP signatures."
+    required: false
   repoReleaseTag:
     description: "Tag to use as repository name."
     required: false
@@ -67,5 +68,5 @@ outputs:
   repofile3:
     description: "<repoReleaseTag>.files.tar.gz"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
