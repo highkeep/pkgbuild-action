@@ -38,6 +38,7 @@ if [ "${INPUT_NVIDIAUTILS:-false}" == true ]; then
 fi
 
 if [ -n "${INPUT_RECVKEYS:-}" ]; then
+    echo "Running gpg --recv-keys for: ${INPUT_RECVKEYS:-}"
     readarray -td '' publicKeys < <(awk '{ gsub(/, /,"\0"); print; }' <<<"${INPUT_RECVKEYS:-}, ")
     unset 'publicKeys[-1]'
 
