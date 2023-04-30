@@ -87,7 +87,7 @@ fi
 # Assume that if .SRCINFO is missing then it is generated elsewhere.
 # AUR checks that .SRCINFO exists so a missing file can't go unnoticed.
 # Empty and/or commented lines should be ignored to mitigate false positives.
-if [ -f .SRCINFO ] && ! diff -BI '^\s*#' .SRCINFO <(makepkg --printsrcinfo) >/dev/null 2>&1; then
+if [ -f .SRCINFO ] && ! diff -BI '^\s*#' .SRCINFO <(sudo -H -u builder makepkg --printsrcinfo) >/dev/null 2>&1; then
     echo "::error file=$FILE,line=$LINENO::Mismatched .SRCINFO. Update with: makepkg --printsrcinfo > .SRCINFO"
     exit 1
 fi
